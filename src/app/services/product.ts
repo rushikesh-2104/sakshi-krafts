@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class Product {
-  private apiUrl = 'http://localhost:3000/products';
+
+  private apiUrl = 'https://sakshi-backend-rho.vercel.app/products';
 
   constructor(private http: HttpClient) {}
 
@@ -35,11 +36,7 @@ export class Product {
     return this.http.put(`${this.apiUrl}/${id}`, product);
   }
 
-  getSingleProduct(id:string){
-
-  return this.http.get(
-    `http://localhost:3000/products/${id}`
-  );
-
-}
+  getSingleProduct(id: string) {
+    return this.http.get(`${this.apiUrl}/${id}`);
+  }
 }
