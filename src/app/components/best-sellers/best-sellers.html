@@ -1,0 +1,53 @@
+<section id="bestSeller"
+  class="py-16 px-5 lg:px-10">
+
+  <!-- Heading -->
+
+  <div
+    class="flex
+    justify-between
+    items-center
+    mb-10">
+
+    <h2
+      class="text-3xl
+      lg:text-5xl
+      font-serif">
+
+      Best Sellers
+
+      <span class="text-pink-400">
+        ♥
+      </span>
+
+    </h2>
+
+    <button
+      class="font-medium">
+
+      View All →
+
+    </button>
+
+  </div>
+
+  <!-- Products -->
+
+  <div
+    class="grid
+    grid-cols-2
+    md:grid-cols-3
+    lg:grid-cols-5
+    gap-5">
+
+    @for(product of products; track product._id){
+
+      <app-product-card
+        [product]="product">
+      </app-product-card>
+
+    }
+
+  </div>
+
+</section>

@@ -1,0 +1,177 @@
+<nav
+  class="absolute top-0 left-0 w-full z-50">
+
+  <div
+    class="max-w-[1600px] mx-auto px-4 lg:px-10">
+
+    <div
+      class="h-24 flex items-center justify-between">
+
+      <!-- MOBILE MENU -->
+
+      <button
+        class="lg:hidden text-3xl">
+
+        ☰
+
+      </button>
+
+      <!-- LOGO -->
+
+      <div
+        routerLink="/"
+        class="flex items-center cursor-pointer">
+
+        <img
+          src="/images/logo.png"
+          alt="Sakshi Krafts"
+          class="h-35 md:h-35">
+
+      </div>
+
+      <!-- DESKTOP LINKS -->
+
+      <ul
+        class="hidden lg:flex items-center gap-12 text-lg font-medium text-[#2E2A28]">
+
+        <li>
+
+          <a
+            routerLink="/"
+            routerLinkActive="text-pink-500 font-semibold"
+            [routerLinkActiveOptions]="{exact:true}">
+
+            Home
+
+          </a>
+
+        </li>
+
+        <li>
+
+          <a
+            routerLink="/products"
+            routerLinkActive="text-pink-500 font-semibold">
+
+            Shop
+
+          </a>
+
+        </li>
+
+        <li>
+
+          <a
+            routerLink="/custom"
+            routerLinkActive="text-pink-500 font-semibold">
+
+            Custom Orders
+
+          </a>
+
+        </li>
+
+        <li>
+
+          <a
+            routerLink="/aboutus"
+            routerLinkActive="text-pink-500 font-semibold">
+
+            About Us
+
+          </a>
+
+        </li>
+
+        <li>
+
+          <a
+            routerLink="/contact"
+            routerLinkActive="text-pink-500 font-semibold">
+
+            Contact
+
+          </a>
+
+        </li>
+
+      </ul>
+
+      <!-- RIGHT ICONS -->
+
+      <div
+        class="flex items-center gap-5">
+
+        <!-- Wishlist -->
+
+        <button
+          (click)="goToWishlist()"
+          class="relative text-3xl">
+
+          ❤️
+
+          @if(wishlistCount > 0){
+
+          <span
+            class="absolute
+            -top-1
+            -right-1
+            bg-red-500
+            text-white
+            min-w-5
+            h-5
+            px-1
+            rounded-full
+            text-xs
+            flex
+            items-center
+            justify-center">
+
+            {{wishlistCount}}
+
+          </span>
+
+          }
+
+        </button>
+
+        <!-- Cart -->
+
+        <button
+          (click)="goToCart()"
+          class="relative text-3xl">
+
+          🛒
+
+          @if(cartCount > 0){
+
+          <span
+            class="absolute
+            -top-1
+            -right-1
+            bg-pink-500
+            text-white
+            min-w-5
+            h-5
+            px-1
+            rounded-full
+            text-xs
+            flex
+            items-center
+            justify-center">
+
+            {{cartCount}}
+
+          </span>
+
+          }
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</nav>

@@ -1,0 +1,425 @@
+<section class="max-w-7xl mx-auto px-5 py-16">
+
+  <!-- Hero -->
+
+  <div
+    class="grid lg:grid-cols-2 gap-14 items-center">
+
+    <!-- Left -->
+
+    <div>
+
+      <span
+        class="bg-pink-100
+        text-pink-500
+        px-4
+        py-2
+        rounded-full">
+
+        ✨ Custom Orders
+
+      </span>
+
+      <h1
+        class="font-serif
+        text-5xl
+        lg:text-6xl
+        text-[#2E2A28]
+        mt-6">
+
+        Bring Your
+
+        <span class="text-pink-400">
+
+          Dream Gift
+
+        </span>
+
+        To Life ♥
+
+      </h1>
+
+      <p
+        class="text-gray-600
+        text-lg
+        leading-9
+        mt-8">
+
+        Looking for something unique?
+
+        Share your ideas with us and we'll
+        create a beautiful handmade gift
+        crafted specially for you.
+
+      </p>
+
+    </div>
+
+    <!-- Right -->
+
+    <div>
+
+      <img
+        src="/images/custom-order.png"
+        alt=""
+        class="rounded-3xl shadow-lg">
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FORM -->
+
+<section
+  class="max-w-7xl
+  mx-auto
+  px-5
+  py-10">
+
+  <div
+    class="bg-white
+    rounded-3xl
+    shadow-sm
+    border
+    border-pink-100
+    p-8">
+
+    <h2
+      class="font-serif
+      text-4xl
+      text-center">
+
+      Tell Us Your Idea
+
+    </h2>
+
+    <p
+      class="text-center
+      text-gray-500
+      mt-3">
+
+      Fill in the details and we'll contact you on WhatsApp.
+
+    </p>
+
+    <div
+      class="grid
+      md:grid-cols-2
+      gap-6
+      mt-10">
+
+      <input
+        [(ngModel)]="form.name"
+        type="text"
+        placeholder="Full Name"
+        class="border rounded-xl p-4">
+
+      <input
+        [(ngModel)]="form.phone"
+        type="text"
+        placeholder="Phone Number"
+        class="border rounded-xl p-4">
+
+      <select
+        [(ngModel)]="form.category"
+        class="border rounded-xl p-4">
+
+        <option value="">
+          Select Category
+        </option>
+
+        <option>
+          Crochet Bouquet
+        </option>
+
+        <option>
+          Hair Accessories
+        </option>
+
+        <option>
+          Keychains
+        </option>
+
+        <option>
+          Other
+        </option>
+
+      </select>
+
+      <input
+        [(ngModel)]="form.color"
+        type="text"
+        placeholder="Preferred Colors"
+        class="border rounded-xl p-4">
+
+      <input
+        [(ngModel)]="form.budget"
+        type="number"
+        placeholder="Budget (₹)"
+        class="border rounded-xl p-4">
+
+      <select
+        [(ngModel)]="form.occasion"
+        class="border rounded-xl p-4">
+
+        <option value="">
+          Select Occasion
+        </option>
+
+        <option>
+          Birthday
+        </option>
+
+        <option>
+          Anniversary
+        </option>
+
+        <option>
+          Wedding
+        </option>
+
+        <option>
+          Baby Shower
+        </option>
+
+        <option>
+          Festival
+        </option>
+
+        <option>
+          Other
+        </option>
+
+      </select>
+
+    </div>
+
+    <!-- Description -->
+
+    <textarea
+      [(ngModel)]="form.description"
+      rows="6"
+      placeholder="Describe your custom order..."
+      class="border rounded-xl p-4 w-full mt-6 resize-none">
+    </textarea>
+
+    <!-- Image Upload -->
+
+    <div
+      class="mt-6">
+
+      <label
+        class="font-medium">
+
+        Reference Image (Optional)
+
+      </label>
+
+      <input
+        type="file"
+        class="block mt-3">
+
+      <p
+        class="text-sm
+        text-gray-500
+        mt-2">
+
+        After WhatsApp opens, you can send the reference image there.
+
+      </p>
+
+    </div>
+
+    <!-- Button -->
+
+    <button
+      (click)="sendToWhatsapp()"
+      class="mt-10
+      w-full
+      bg-[#25D366]
+      hover:bg-[#1EBE5D]
+      duration-300
+      text-white
+      py-4
+      rounded-xl
+      text-lg">
+
+      💬 Send Custom Order on WhatsApp
+
+    </button>
+
+  </div>
+
+</section>
+
+<!-- HOW IT WORKS -->
+
+<section
+  class="max-w-7xl
+  mx-auto
+  px-5
+  py-16">
+
+  <h2
+    class="font-serif
+    text-4xl
+    text-center">
+
+    How It Works
+
+  </h2>
+
+  <div
+    class="grid
+    md:grid-cols-4
+    gap-6
+    mt-12">
+
+    <div
+      class="bg-pink-50
+      rounded-3xl
+      p-6
+      text-center">
+
+      <div class="text-5xl">
+        💡
+      </div>
+
+      <h3 class="font-semibold mt-5">
+        Share Your Idea
+      </h3>
+
+    </div>
+
+    <div
+      class="bg-pink-50
+      rounded-3xl
+      p-6
+      text-center">
+
+      <div class="text-5xl">
+        💬
+      </div>
+
+      <h3 class="font-semibold mt-5">
+        We Discuss
+      </h3>
+
+    </div>
+
+    <div
+      class="bg-pink-50
+      rounded-3xl
+      p-6
+      text-center">
+
+      <div class="text-5xl">
+        🧶
+      </div>
+
+      <h3 class="font-semibold mt-5">
+        Handmade
+      </h3>
+
+    </div>
+
+    <div
+      class="bg-pink-50
+      rounded-3xl
+      p-6
+      text-center">
+
+      <div class="text-5xl">
+        🎁
+      </div>
+
+      <h3 class="font-semibold mt-5">
+        Delivered
+      </h3>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- WHY CHOOSE US -->
+
+<section
+  class="max-w-7xl
+  mx-auto
+  px-5
+  pb-20">
+
+  <h2
+    class="font-serif
+    text-4xl
+    text-center">
+
+    Why Choose Sakshi Krafts ♥
+
+  </h2>
+
+  <div
+    class="grid
+    md:grid-cols-4
+    gap-6
+    mt-12">
+
+    <div
+      class="text-center">
+
+      <div class="text-5xl">
+        💖
+      </div>
+
+      <h3 class="font-semibold mt-4">
+        100% Handmade
+      </h3>
+
+    </div>
+
+    <div
+      class="text-center">
+
+      <div class="text-5xl">
+        ⭐
+      </div>
+
+      <h3 class="font-semibold mt-4">
+        Premium Quality
+      </h3>
+
+    </div>
+
+    <div
+      class="text-center">
+
+      <div class="text-5xl">
+        🎨
+      </div>
+
+      <h3 class="font-semibold mt-4">
+        Personalized
+      </h3>
+
+    </div>
+
+    <div
+      class="text-center">
+
+      <div class="text-5xl">
+        🎁
+      </div>
+
+      <h3 class="font-semibold mt-4">
+        Gift Ready
+      </h3>
+
+    </div>
+
+  </div>
+
+</section>

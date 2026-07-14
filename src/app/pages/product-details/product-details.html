@@ -1,0 +1,267 @@
+<section
+  class="max-w-7xl mx-auto px-5 py-10">
+
+  <!-- Breadcrumb -->
+
+  <p
+    class="text-sm text-gray-500 mb-6">
+
+    Home / Shop /
+    {{product?.title}}
+
+  </p>
+
+  <!-- Main -->
+
+  <div
+    class="grid lg:grid-cols-2 gap-10">
+
+    <!-- LEFT -->
+
+    <div>
+
+      <div
+        class="bg-[#F8F1EB]
+        rounded-3xl
+        overflow-hidden">
+
+        <img
+          [src]="product?.url"
+          [alt]="product?.title"
+          class="w-full h-[550px] object-cover">
+
+      </div>
+
+      <!-- Thumbnails -->
+
+      <div
+        class="flex gap-3 mt-4">
+
+        <img
+          [src]="product?.url"
+          class="w-20 h-20 rounded-xl object-cover border cursor-pointer hover:border-pink-400">
+
+        <img
+          [src]="product?.url"
+          class="w-20 h-20 rounded-xl object-cover border cursor-pointer hover:border-pink-400">
+
+        <img
+          [src]="product?.url"
+          class="w-20 h-20 rounded-xl object-cover border cursor-pointer hover:border-pink-400">
+
+      </div>
+
+    </div>
+
+    <!-- RIGHT -->
+
+    <div>
+
+      <h1
+        class="font-serif text-5xl">
+
+        {{product?.title}}
+
+      </h1>
+
+      <h2
+        class="text-pink-500 text-4xl font-bold mt-4">
+
+        ₹{{product?.price}}
+
+      </h2>
+
+      <p
+        class="text-gray-600 mt-6 leading-8">
+
+        {{product?.description}}
+
+      </p>
+
+      <!-- Features -->
+
+      <ul
+        class="mt-8 space-y-4 text-lg">
+
+        <li>💖 Handmade with love</li>
+
+        <li>🌸 Premium quality yarn</li>
+
+        <li>🎁 Beautiful gift wrapping</li>
+
+        <li>✨ Perfect for all occasions</li>
+
+      </ul>
+
+      <!-- Quantity -->
+
+      <div
+        class="flex items-center gap-4 mt-10">
+
+        <button
+          (click)="decreaseQuantity()"
+          class="w-12 h-12 border rounded-lg hover:bg-pink-50 transition">
+
+          -
+
+        </button>
+
+        <span
+          class="text-xl font-semibold w-10 text-center">
+
+          {{quantity}}
+
+        </span>
+
+        <button
+          (click)="increaseQuantity()"
+          class="w-12 h-12 border rounded-lg hover:bg-pink-50 transition">
+
+          +
+
+        </button>
+
+      </div>
+
+      <!-- Buttons -->
+
+      <div
+        class="flex flex-col gap-4 mt-8">
+
+        <button
+          (click)="addToCart()"
+          class="bg-pink-500 hover:bg-pink-600 duration-300 text-white py-4 rounded-xl font-medium">
+
+          Add To Cart
+
+        </button>
+
+        <button (click)="orderOnWhatsapp()"
+          class="bg-[#6E8D5C] hover:bg-[#5d774f] duration-300 text-white py-4 rounded-xl font-medium">
+
+          Order on WhatsApp
+
+        </button>
+
+      </div>
+
+      <!-- Product Info -->
+
+      <div
+        class="grid grid-cols-2 gap-4 mt-10">
+
+        <div
+          class="bg-pink-50 rounded-xl p-4">
+
+          <h4 class="font-semibold">
+            Category
+          </h4>
+
+          <p class="text-gray-600 mt-1">
+            {{product?.category}}
+          </p>
+
+        </div>
+
+        <div
+          class="bg-pink-50 rounded-xl p-4">
+
+          <h4 class="font-semibold">
+            Quantity
+          </h4>
+
+          <p class="text-gray-600 mt-1">
+            {{quantity}}
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- Icons -->
+
+      <div
+        class="grid grid-cols-4 gap-5 mt-10 text-center">
+
+        <div>
+
+          <div class="text-2xl">
+            💖
+          </div>
+
+          <p class="mt-2 text-sm">
+            Handmade
+          </p>
+
+        </div>
+
+        <div>
+
+          <div class="text-2xl">
+            ⭐
+          </div>
+
+          <p class="mt-2 text-sm">
+            Premium
+          </p>
+
+        </div>
+
+        <div>
+
+          <div class="text-2xl">
+            🎁
+          </div>
+
+          <p class="mt-2 text-sm">
+            Gift Ready
+          </p>
+
+        </div>
+
+        <div>
+
+          <div class="text-2xl">
+            🚚
+          </div>
+
+          <p class="mt-2 text-sm">
+            Delivery
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- Related Products -->
+
+<section
+  class="max-w-7xl mx-auto px-5 py-16">
+
+  <h2
+    class="font-serif text-4xl mb-10">
+
+    You may also like ♥
+
+  </h2>
+
+  <div
+    class="grid grid-cols-2 md:grid-cols-4 gap-5">
+
+    @for(item of relatedProducts; track item._id){
+
+      <app-product-card
+        [product]="item">
+      </app-product-card>
+
+    }
+
+  </div>
+
+</section>

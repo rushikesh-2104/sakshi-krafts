@@ -1,0 +1,93 @@
+<div
+  class="group
+  cursor-pointer"
+  (click)="viewProduct(product._id)">
+
+  <div
+    class="relative
+    rounded-3xl
+    overflow-hidden
+    bg-[#F8F1EB]">
+
+    <!-- Product Image -->
+
+    <img
+      [src]="product.url"
+      [alt]="product.title"
+      class="w-full
+      h-60
+      object-cover
+      group-hover:scale-105
+      duration-300">
+
+    <!-- Wishlist -->
+
+    <button
+      (click)="toggleWishlist($event)"
+      class="absolute
+      top-3
+      right-3
+      bg-white
+      w-10
+      h-10
+      rounded-full
+      shadow
+      flex
+      items-center
+      justify-center
+      text-xl
+      hover:scale-110
+      duration-300">
+
+      {{ isWishlisted() ? '❤️' : '🤍' }}
+
+    </button>
+
+  </div>
+
+  <!-- Product Info -->
+
+  <div class="mt-4">
+
+    <h3
+      class="font-medium
+      text-lg
+      text-[#2E2A28]
+      line-clamp-1">
+
+      {{product.title}}
+
+    </h3>
+
+    <div
+      class="flex
+      items-center
+      justify-between
+      mt-2">
+
+      <p
+        class="font-bold
+        text-xl
+        text-pink-500">
+
+        ₹{{product.price}}
+
+      </p>
+
+      <span
+        class="text-xs
+        bg-pink-100
+        text-pink-600
+        px-3
+        py-1
+        rounded-full">
+
+        Handmade
+
+      </span>
+
+    </div>
+
+  </div>
+
+</div>
