@@ -60,6 +60,99 @@
 
     <!-- Main -->
 
+    <div class="min-h-screen bg-rose-50 flex">
+
+    <!-- Overlay -->
+
+    @if(sidebarOpen){
+
+    <div
+        (click)="toggleSidebar()"
+        class="fixed inset-0 bg-black/40 z-40 lg:hidden">
+    </div>
+
+    }
+
+    <!-- Sidebar -->
+
+    <aside
+        class="fixed lg:static top-0 left-0 h-screen w-64 bg-white shadow-lg p-6 z-50 transition-transform duration-300 flex flex-col"
+        [class.translate-x-0]="sidebarOpen"
+        [class.-translate-x-full]="!sidebarOpen"
+        [class.lg:translate-x-0]="true">
+
+        <div class="flex justify-between items-center">
+
+            <h1 class="text-2xl font-bold text-pink-600">
+
+                🌸 Sakshi Admin
+
+            </h1>
+
+            <button
+                class="lg:hidden text-2xl"
+                (click)="toggleSidebar()">
+
+                ✕
+
+            </button>
+
+        </div>
+
+        <p
+            class="text-gray-500 text-sm mt-1">
+
+            Handmade Store Panel
+
+        </p>
+
+        <nav
+            class="mt-10 flex flex-col gap-3">
+
+            <button
+                class="bg-pink-500 text-white px-4 py-3 rounded-xl text-left"
+                (click)="sidebarOpen=false">
+
+                🏠 Dashboard
+
+            </button>
+
+            <button
+                routerLink="/admin/aproducts"
+                (click)="sidebarOpen=false"
+                class="hover:bg-pink-100 px-4 py-3 rounded-xl text-left">
+
+                📦 Products
+
+            </button>
+
+            <button
+                routerLink="/admin/categories"
+                (click)="sidebarOpen=false"
+                class="hover:bg-pink-100 px-4 py-3 rounded-xl text-left">
+
+                🗂 Categories
+
+            </button>
+
+            <button
+                (click)="logout()"
+                class="hover:bg-red-100 text-red-500 px-4 py-3 rounded-xl text-left">
+
+                🚪 Logout
+
+            </button>
+
+        </nav>
+
+    </aside>
+
+
+
+
+
+    <!-- Main -->
+
     <div
         class="flex-1">
 
@@ -68,7 +161,8 @@
         <header
             class="bg-white shadow-sm px-6 py-4 flex justify-between items-center">
 
-            <button (click)="toggleSidebar()"
+            <button
+                (click)="toggleSidebar()"
                 class="lg:hidden text-3xl">
 
                 ☰
@@ -105,8 +199,6 @@
 
         <main class="p-6">
 
-            <!-- Cards -->
-
             <div
                 class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
 
@@ -137,8 +229,6 @@
 
                 </div>
 
-
-
                 <!-- Categories -->
 
                 <div
@@ -165,8 +255,6 @@
                     </p>
 
                 </div>
-
-
 
                 <!-- Status -->
 
@@ -197,14 +285,10 @@
 
             </div>
 
-
-
-
-
-            
-
         </main>
 
     </div>
+
+</div>
 
 </div>
