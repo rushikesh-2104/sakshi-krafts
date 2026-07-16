@@ -267,6 +267,12 @@ this.loading = false;
 // UI
 // =====================================
 
+uploading = false;
+
+selectedFile!: File;
+
+previewUrl = '';
+
 showModal = false;
 
 saving = false;
@@ -561,6 +567,76 @@ get pages(): number[] {
     (_, i) => i + 1
 
   );
+
+}
+
+
+
+
+
+// =====================================
+// SELECT IMAGE
+// =====================================
+
+onFileSelected(event: any) {
+
+  const file = event.target.files[0];
+
+  if (!file) return;
+
+  this.selectedFile = file;
+
+  this.previewUrl = URL.createObjectURL(file);
+
+}
+
+// =====================================
+// UPLOAD IMAGE
+// =====================================
+
+uploadImage() {
+
+  if (!this.selectedFile) {
+
+    alert('Please select an image');
+
+    return;
+
+  }
+
+  console.log("Uploading...", this.selectedFile);
+
+  this.uploading = true;
+
+  this.productService
+    .uploadImage(this.selectedFile)
+    .subscribe({
+
+      next: (res: any) => {
+
+        console.log("Cloudinary Response:", res);
+
+        this.newProduct.url = res.url;
+
+        console.log("Saved URL:", this.newProduct.url);
+
+        this.previewUrl = res.url;
+
+        this.uploading = false;
+
+      },
+
+      error: (err) => {
+
+        console.log("Upload Error:", err);
+
+        this.uploading = false;
+
+        alert(err.error?.message || 'Upload Failed');
+
+      }
+
+    });
 
 }
 }

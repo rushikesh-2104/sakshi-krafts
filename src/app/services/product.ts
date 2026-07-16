@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient , HttpEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class Product {
 
   private apiUrl = 'https://sakshi-backend-rho.vercel.app/products';
+  private uploadUrl ='https://sakshi-backend-rho.vercel.app/upload/product';
 
   constructor(private http: HttpClient) {}
 
@@ -39,4 +40,27 @@ export class Product {
   getSingleProduct(id: string) {
     return this.http.get(`${this.apiUrl}/${id}`);
   }
+
+
+
+
+  // ==========================
+// UPLOAD IMAGE
+// ==========================
+
+uploadImage(file: File): Observable<any> {
+
+  const formData = new FormData();
+
+  formData.append('image', file);
+
+  return this.http.post(
+
+    this.uploadUrl,
+
+    formData
+
+  );
+
+}
 }
