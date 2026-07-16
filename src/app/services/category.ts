@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Auth } from './auth';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,22 @@ export class Category {
   private apiUrl =
     'https://sakshi-backend-rho.vercel.app/categories';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient , private auth:Auth) {}
+
+
+  private getHeaders() {
+
+  return {
+
+    headers: new HttpHeaders({
+
+      Authorization: `Bearer ${this.auth.getToken()}`
+
+    })
+
+  };
+
+}
 
   // ==========================
   // GET ALL CATEGORIES
@@ -30,7 +46,8 @@ export class Category {
 
     return this.http.post(
       this.apiUrl,
-      category
+      category,
+      this.getHeaders()
     );
 
   }
@@ -42,7 +59,8 @@ export class Category {
   deleteCategory(id: string): Observable<any> {
 
     return this.http.delete(
-      `${this.apiUrl}/${id}`
+      `${this.apiUrl}/${id}`,
+      this.getHeaders()
     );
 
   }
@@ -67,7 +85,8 @@ export class Category {
 
     return this.http.put(
       `${this.apiUrl}/${id}`,
-      category
+      category,
+      this.getHeaders()
     );
 
   }
