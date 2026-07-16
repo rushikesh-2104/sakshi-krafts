@@ -14,6 +14,7 @@ export class Dashboard implements OnInit {
 
   totalProducts = 0;
   totalCategories = 0;
+  sidebarOpen = false;
 
   recentProducts: any[] = [];
 
@@ -40,6 +41,12 @@ export class Dashboard implements OnInit {
 this.authService.logout();
 
 this.router.navigate(['/auth']);
+
+}
+
+toggleSidebar() {
+
+  this.sidebarOpen = !this.sidebarOpen;
 
 }
 
