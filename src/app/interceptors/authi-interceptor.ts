@@ -1,10 +1,10 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 
 export const authiInterceptor: HttpInterceptorFn = (req, next) => {
-  
+  console.log("Interceptor Hit");
 
   const token = localStorage.getItem('token');
-
+console.log(token);
   // Public APIs
   if (
 
