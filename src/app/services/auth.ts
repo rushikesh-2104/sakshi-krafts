@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class Auth {
 
-  private apiUrl = 'http://localhost:3000/login';
+  private apiUrl = 'https://sakshi-backend-rho.vercel.app/login';
 
   constructor(private http: HttpClient) {}
 

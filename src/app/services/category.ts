@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class Category {
 
   private apiUrl =
-    'http://localhost:3000/categories';
+    'https://sakshi-backend-rho.vercel.app/categories';
 
   constructor(private http: HttpClient) {}
 
