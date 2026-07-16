@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Category } from '../../services/category';
 
 @Component({
   selector: 'app-categories',
@@ -7,10 +8,42 @@ import { Router } from '@angular/router';
   templateUrl: './categories.html',
   styleUrl: './categories.css',
 })
-export class Categories {
-constructor(
-    private router: Router
+export class Categories implements OnInit {
+
+  categories: any[] = [];
+
+  constructor(
+    private router: Router,
+    private categoryService: Category
   ) {}
+
+  ngOnInit(): void {
+
+    this.loadCategories();
+
+  }
+
+  loadCategories() {
+
+    this.categoryService
+      .getCategories()
+      .subscribe({
+
+        next: (data: any) => {
+
+          this.categories = data;
+
+        },
+
+        error: (err) => {
+
+          console.log(err);
+
+        }
+
+      });
+
+  }
 
   openCategory(category: string) {
 
@@ -24,4 +57,5 @@ constructor(
     );
 
   }
+
 }

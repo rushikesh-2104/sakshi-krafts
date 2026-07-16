@@ -1,0 +1,210 @@
+<div class="min-h-screen bg-rose-50 flex">
+
+    <!-- Sidebar -->
+
+    <aside
+        class="hidden lg:flex flex-col w-64 bg-white shadow-md p-6">
+
+        <h1
+            class="text-2xl font-bold text-pink-600">
+
+            🌸 Sakshi Admin
+
+        </h1>
+
+        <p
+            class="text-gray-500 text-sm mt-1">
+
+            Handmade Store Panel
+
+        </p>
+
+        <nav
+            class="mt-10 flex flex-col gap-3">
+
+            <button
+                class="bg-pink-500 text-white px-4 py-3 rounded-xl text-left">
+
+                🏠 Dashboard
+
+            </button>
+
+            <button routerLink="/admin/aproducts"
+                class="hover:bg-pink-100 px-4 py-3 rounded-xl text-left">
+
+                📦 Products
+
+            </button>
+
+            <button routerLink="/admin/categories"
+                class="hover:bg-pink-100 px-4 py-3 rounded-xl text-left">
+
+                🗂 Categories
+
+            </button>
+
+            <button (click)="logout()"
+                class="hover:bg-red-100 text-red-500 px-4 py-3 rounded-xl text-left">
+
+                🚪 Logout
+
+            </button>
+
+        </nav>
+
+    </aside>
+
+
+
+
+
+    <!-- Main -->
+
+    <div
+        class="flex-1">
+
+        <!-- Navbar -->
+
+        <header
+            class="bg-white shadow-sm px-6 py-4 flex justify-between items-center">
+
+            <button
+                class="lg:hidden text-3xl">
+
+                ☰
+
+            </button>
+
+            <div>
+
+                <h1
+                    class="text-xl font-bold">
+
+                    Welcome Sakshi 👋
+
+                </h1>
+
+                <p
+                    class="text-gray-500">
+
+                    Manage your products
+
+                </p>
+
+            </div>
+
+            <img
+                src="https://ui-avatars.com/api/?name=Sakshi"
+                class="w-11 h-11 rounded-full">
+
+        </header>
+
+
+
+
+
+        <main class="p-6">
+
+            <!-- Cards -->
+
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+
+                <!-- Products -->
+
+                <div
+                    class="bg-white rounded-2xl shadow-sm p-6">
+
+                    <div class="text-5xl">
+
+                        📦
+
+                    </div>
+
+                    <h2
+                        class="text-gray-500 mt-4">
+
+                        Total Products
+
+                    </h2>
+
+                    <p
+                        class="text-4xl font-bold mt-2">
+
+                        {{totalProducts}}
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- Categories -->
+
+                <div
+                    class="bg-white rounded-2xl shadow-sm p-6">
+
+                    <div class="text-5xl">
+
+                        🗂
+
+                    </div>
+
+                    <h2
+                        class="text-gray-500 mt-4">
+
+                        Categories
+
+                    </h2>
+
+                    <p
+                        class="text-4xl font-bold mt-2">
+
+                        {{totalCategories}}
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- Status -->
+
+                <div
+                    class="bg-white rounded-2xl shadow-sm p-6">
+
+                    <div class="text-5xl">
+
+                        🌐
+
+                    </div>
+
+                    <h2
+                        class="text-gray-500 mt-4">
+
+                        Website Status
+
+                    </h2>
+
+                    <span
+                        class="inline-block mt-4 bg-green-100 text-green-700 px-4 py-2 rounded-full">
+
+                        🟢 Live
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+
+
+            
+
+        </main>
+
+    </div>
+
+</div>

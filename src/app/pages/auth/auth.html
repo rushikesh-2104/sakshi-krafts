@@ -1,46 +1,132 @@
-<div class="min-h-screen bg-[#FDF7F5] flex items-center justify-center p-8">
+<div class="min-h-screen bg-gradient-to-br from-rose-50 to-pink-100 flex items-center justify-center p-5">
 
-    <div
-        class="relative w-full max-w-7xl h-[760px] bg-[#FFF7F5] rounded-[35px] shadow-2xl overflow-hidden flex">
+    <div class="w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden">
 
-        <!-- Left Section -->
+        <!-- Header -->
 
-        <app-auth-banner></app-auth-banner>
+        <div class="bg-pink-500 text-white text-center p-8">
 
-        <!-- Right Section -->
+            <div class="text-6xl mb-3">
 
-        <div
-            class="w-1/2 bg-white rounded-l-[45px] flex items-center justify-center relative">
-
-            <!-- Toggle -->
-
-            <div
-                class="absolute top-10 left-1/2 -translate-x-1/2 bg-white rounded-full shadow-lg p-2 flex gap-2">
-
-                <button>
-
-                    Sign Up
-
-                </button>
-
-                <button>
-
-                    Login
-
-                </button>
+                🌸
 
             </div>
 
-            <!-- Dynamic Form -->
+            <h1 class="text-3xl font-bold">
+
+                Sakshi Krafts
+
+            </h1>
+
+            <p class="mt-2 text-pink-100">
+
+                Admin Dashboard Login
+
+            </p>
+
+        </div>
+
+        <!-- Form -->
+
+        <div class="p-8">
+
+            <!-- Email -->
 
             <div>
 
-                Signup Component
+                <label class="block font-semibold mb-2">
+
+                    Email Address
+
+                </label>
+
+                <input
+                    type="email"
+                    [(ngModel)]="email"
+                    placeholder="Enter your email"
+                    class="w-full border border-gray-300 rounded-xl p-3 outline-none focus:border-pink-500 transition">
 
             </div>
+
+            <!-- Password -->
+
+            <div class="mt-6">
+
+                <label class="block font-semibold mb-2">
+
+                    Password
+
+                </label>
+
+                <div class="relative">
+
+                    <input
+                        [type]="hidePassword ? 'password' : 'text'"
+                        [(ngModel)]="password"
+                        placeholder="Enter your password"
+                        class="w-full border border-gray-300 rounded-xl p-3 pr-12 outline-none focus:border-pink-500 transition">
+
+                    <button
+                    type="button"
+                    (click)="togglePassword()">
+
+                    {{hidePassword ? '👁' : '🙈'}}
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Remember -->
+
+            <div class="flex justify-between items-center mt-6">
+
+                <label class="flex items-center gap-2 cursor-pointer">
+
+                    <input type="checkbox" [(ngModel)]="rememberMe">
+
+                    <span class="text-gray-600">
+
+                        Remember Me
+
+                    </span>
+
+                </label>
+
+                
+
+            </div>
+
+            <!-- Login -->
+
+            <button (click)="login()" [disabled]="loading"
+                class="w-full mt-8 bg-pink-500 hover:bg-pink-600 text-white rounded-xl py-3 font-semibold transition">
+
+                {{loading ? 'Logging in...' : 'Login'}}
+
+            </button>
+
+        </div>
+
+        <!-- Footer -->
+
+        <div class="bg-gray-50 text-center py-4 text-sm text-gray-500">
+
+            © 2026 Sakshi Krafts
 
         </div>
 
     </div>
 
 </div>
+
+@if(errorMessage){
+
+<p class="text-red-500 text-sm mt-3">
+
+    {{errorMessage}}
+
+</p>
+
+}

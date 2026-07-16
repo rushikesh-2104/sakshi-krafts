@@ -1,0 +1,320 @@
+<div class="min-h-screen bg-rose-50 p-6">
+
+<!-- Header -->
+<div class="flex flex-col md:flex-row md:justify-between md:items-center gap-5">
+
+<div>
+<h1 class="text-4xl font-bold">🗂 Categories</h1>
+<p class="text-gray-500 mt-2">{{totalCategories}} Categories Available</p>
+</div>
+
+<button (click)="addCategory()"
+class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-3 rounded-xl font-medium">
++ Add Category
+</button>
+
+</div>
+
+<div class="bg-white rounded-2xl shadow-sm p-5 mt-8">
+
+<input
+type="text"
+[(ngModel)]="searchText"
+(input)="searchCategory()"
+placeholder="🔍 Search Category"
+class="w-full border rounded-xl p-3 outline-none focus:border-pink-500">
+
+</div>
+
+@if(loading){
+
+<div class="text-center py-20">
+Loading Categories...
+</div>
+
+} @else {
+
+@if(filtered.length==0){
+
+<div class="bg-white rounded-2xl shadow-sm mt-8 p-10 text-center">
+
+<h2 class="text-2xl font-bold">
+No Categories Found
+</h2>
+
+</div>
+
+} @else {
+
+<div class="hidden lg:block bg-white rounded-2xl shadow-sm mt-8 overflow-hidden">
+
+<table class="w-full">
+
+<thead class="bg-pink-50">
+
+<tr>
+
+<th class="p-4 text-left">Category</th>
+
+<th class="text-left">Products</th>
+
+<th class="text-center">Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+@for(category of filtered; track category.name){
+
+<tr class="border-t">
+
+<td class="p-4 font-semibold">
+{{category.name}}
+</td>
+
+<td>
+{{category.products}}
+</td>
+
+<td>
+
+<div class="flex justify-center gap-4">
+
+<button
+(click)="editCategory(category)"
+class="text-pink-600">
+Edit
+</button>
+
+<button
+(click)="deleteCategory(category)"
+class="text-red-500">
+Delete
+</button>
+
+</div>
+
+</td>
+
+</tr>
+
+}
+
+</tbody>
+
+</table>
+
+</div>
+
+<div class="lg:hidden mt-8 flex flex-col gap-5">
+
+@for(category of filtered; track category.name){
+
+<div class="bg-white rounded-2xl shadow-sm p-5">
+
+<h2 class="text-xl font-bold">
+{{category.name}}
+</h2>
+
+<p class="text-gray-500 mt-2">
+Products : {{category.products}}
+</p>
+
+<div class="flex gap-3 mt-5">
+
+<button
+(click)="editCategory(category)"
+class="flex-1 bg-pink-500 text-white py-3 rounded-xl">
+Edit
+</button>
+
+<button
+(click)="deleteCategory(category)"
+class="flex-1 bg-red-500 text-white py-3 rounded-xl">
+Delete
+</button>
+
+</div>
+
+</div>
+
+}
+
+</div>
+
+}
+
+}
+
+</div>
+
+
+<!-- ========================================= -->
+<!-- ADD CATEGORY MODAL -->
+<!-- ========================================= -->
+
+@if(showAddModal){
+
+<div
+class="fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4">
+
+<div
+class="bg-white rounded-3xl w-full max-w-lg shadow-2xl">
+
+<!-- Header -->
+
+<div
+class="flex justify-between items-center border-b p-6">
+
+<div>
+
+<h2
+class="text-2xl font-bold">
+
+Add Category
+
+</h2>
+
+<p
+class="text-gray-500 mt-1">
+
+Create a new category
+
+</p>
+
+</div>
+
+<button
+
+(click)="closeModal()"
+
+class="text-3xl text-gray-400 hover:text-red-500">
+
+×
+
+</button>
+
+</div>
+
+<!-- Body -->
+
+<div
+class="p-6 space-y-5">
+
+<!-- Category Name -->
+
+<div>
+
+<label
+class="font-medium">
+
+Category Name
+
+</label>
+
+<input
+
+[(ngModel)]="newCategory.name"
+
+type="text"
+
+placeholder="Enter category name"
+
+class="w-full border rounded-xl p-3 mt-2 outline-none focus:border-pink-500">
+
+</div>
+
+<!-- Category Image -->
+
+<div>
+
+<label
+class="font-medium">
+
+Category Image URL
+
+</label>
+
+<input
+
+[(ngModel)]="newCategory.image"
+
+type="text"
+
+placeholder="Paste image url"
+
+class="w-full border rounded-xl p-3 mt-2 outline-none focus:border-pink-500">
+
+</div>
+
+<!-- Preview -->
+
+@if(newCategory.image){
+
+<div>
+
+<label
+class="font-medium">
+
+Preview
+
+</label>
+
+<img
+
+[src]="newCategory.image"
+
+class="mt-3 h-44 w-full object-cover rounded-xl border">
+
+</div>
+
+}
+
+</div>
+
+<!-- Footer -->
+
+<div
+class="border-t p-6 flex gap-3">
+
+<button
+
+(click)="closeModal()"
+
+class="flex-1 border rounded-xl py-3 font-medium hover:bg-gray-100">
+
+Cancel
+
+</button>
+
+<button
+
+(click)="saveCategory()"
+
+[disabled]="saving"
+
+class="flex-1 bg-pink-500 hover:bg-pink-600 text-white rounded-xl py-3 font-medium">
+
+@if(!saving){
+
+{{ editing ? 'Update Category' : 'Save Category' }}
+
+}
+
+@else{
+
+Saving...
+
+}
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+}

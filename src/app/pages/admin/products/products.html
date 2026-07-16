@@ -1,0 +1,665 @@
+<div class="min-h-screen bg-rose-50 p-6">
+
+    <!-- ================= Header ================= -->
+
+    <div
+        class="flex flex-col md:flex-row md:justify-between md:items-center gap-5">
+
+        <div>
+
+            <h1
+                class="text-4xl font-bold">
+
+                📦 Products
+
+            </h1>
+
+            <p
+                class="text-gray-500 mt-2">
+
+                Manage all handmade products
+
+            </p>
+
+        </div>
+
+        <button (click)="addProduct()"
+            class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-3 rounded-xl font-medium">
+
+            + Add Product
+
+        </button>
+
+    </div>
+
+
+
+
+
+    <!-- Search & Filter -->
+
+    <div
+        class="bg-white rounded-2xl shadow-sm p-5 mt-8">
+
+        <div
+            class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+            <!-- Search -->
+
+            <input
+                (input)="searchProducts()"
+                id="name" 
+                name="name"
+                [(ngModel)]="searchText"
+                type="text"
+
+                placeholder="🔍 Search Product"
+
+                class="border rounded-xl p-3 outline-none focus:border-pink-500">
+
+
+
+
+            <!-- Category -->
+
+            <select
+[(ngModel)]="newProduct.category"
+class="w-full border rounded-xl p-3 mt-2">
+
+    <option value="">
+        Select Category
+    </option>
+
+    @for(category of categories; track category._id){
+
+    <option [value]="category.name">
+
+        {{category.name}}
+
+    </option>
+
+    }
+
+</select>
+
+
+
+
+            <!-- Sort -->
+
+            <select (change)="sort($event)"
+
+                class="border rounded-xl p-3">
+
+                <option value="">
+
+                    Sort
+
+                </option>
+
+                <option  value="low">
+
+                    Price Low → High
+
+                </option >
+
+                <option value="high">
+
+                    Price High → Low
+
+                </option>
+
+                <option value="az">
+
+                    A → Z
+
+                </option>
+
+                <option value="za">
+
+                    Z → A
+
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    <!-- Desktop Table -->
+
+    <div
+        class="hidden lg:block bg-white rounded-2xl shadow-sm mt-8 overflow-hidden">
+
+        <table class="w-full">
+
+            <thead
+                class="bg-pink-50">
+
+                <tr>
+
+                    <th class="text-left p-4">
+
+                        Image
+
+                    </th>
+
+                    <th class="text-left">
+
+                        Product
+
+                    </th>
+
+                    <th class="text-left">
+
+                        Category
+
+                    </th>
+
+                    <th class="text-left">
+
+                        Price
+
+                    </th>
+
+                    <th class="text-left">
+
+                        Status
+
+                    </th>
+
+                    <th class="text-center">
+
+                        Actions
+
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @for(product of filtered; track product._id){
+
+                <tr
+                    class="border-t">
+
+                    <td class="p-4">
+
+                        <img
+
+                            [src]="product.url"
+
+                            class="w-20 h-20 object-cover rounded-xl">
+
+                    </td>
+
+                    <td>
+
+                        <h2
+                            class="font-semibold">
+
+                            {{product.title}}
+
+                        </h2>
+
+                        <p
+                            class="text-gray-500 text-sm">
+
+                            {{product.description}}
+
+                        </p>
+
+                    </td>
+
+                    <td>
+
+                        {{product.category}}
+
+                    </td>
+
+                    <td>
+
+                        ₹{{product.price}}
+
+                    </td>
+
+                    <td>
+
+                        <span
+                            class="bg-green-100 text-green-700 px-3 py-1 rounded-full">
+
+                            Active
+
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <div
+                            class="flex justify-center gap-3">
+
+                        
+
+                            <button (click)="editProduct(product)"
+                                class="text-pink-600">
+
+                                Edit
+
+                            </button>
+
+                            <button (click)="deleteProduct(product._id)"
+                                class="text-red-500">
+
+                                Delete
+
+                            </button>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+
+
+
+
+
+
+    <!-- Mobile Cards -->
+
+    <div
+        class="lg:hidden mt-8 flex flex-col gap-5">
+
+        @for(product of products; track product._id){
+
+        <div
+            class="bg-white rounded-2xl shadow-sm p-4">
+
+            <img
+
+                [src]="product.url"
+
+                class="rounded-xl h-48 w-full object-cover">
+
+            <h2
+                class="font-bold text-xl mt-4">
+
+                {{product.title}}
+
+            </h2>
+
+            <p
+                class="text-gray-500 mt-2">
+
+                {{product.description}}
+
+            </p>
+
+            <div
+                class="flex justify-between mt-4">
+
+                <span>
+
+                    {{product.category}}
+
+                </span>
+
+                <span
+                    class="font-bold">
+
+                    ₹{{product.price}}
+
+                </span>
+
+            </div>
+
+            <div
+                class="flex gap-3 mt-5">
+
+                
+
+                <button (click)="editProduct(product)"
+                    class="flex-1 bg-pink-500 text-white rounded-xl py-3">
+
+                    Edit
+
+                </button>
+
+                <button (click)="deleteProduct(product._id)"
+                    class="flex-1 bg-red-500 text-white rounded-xl py-3">
+
+                    Delete
+
+                </button>
+
+            </div>
+
+        </div>
+
+        }
+
+    </div>
+
+
+
+
+
+
+
+
+   <div class="flex justify-center gap-2 mt-8">
+
+    <button
+
+    (click)="previousPage()"
+
+    [disabled]="currentPage==1"
+
+    class="border px-4 py-2 rounded-xl">
+
+        Previous
+
+    </button>
+
+    @for(page of pages;track page){
+
+    <button
+
+    (click)="goToPage(page)"
+
+    [class.bg-pink-500]="page===currentPage"
+
+    [class.text-white]="page===currentPage"
+
+    class="border px-4 py-2 rounded-xl">
+
+        {{page}}
+
+    </button>
+
+    }
+
+    <button
+
+    (click)="nextPage()"
+
+    [disabled]="currentPage==totalPages"
+
+    class="border px-4 py-2 rounded-xl">
+
+        Next
+
+    </button>
+
+</div>
+
+
+
+<!-- ===================================== -->
+<!-- PRODUCT MODAL -->
+<!-- ===================================== -->
+
+@if(showModal){
+
+<div
+class="fixed inset-0 bg-black/40 z-50 flex justify-center items-center p-4">
+
+<div
+class="bg-white rounded-3xl w-full max-w-2xl shadow-2xl overflow-hidden">
+
+    <!-- Header -->
+
+    <div
+    class="flex justify-between items-center border-b p-6">
+
+        <div>
+
+            <h2
+            class="text-3xl font-bold">
+
+                {{ editing ? 'Edit Product' : 'Add Product' }}
+
+            </h2>
+
+            <p
+            class="text-gray-500 mt-1">
+
+                {{ editing ? 'Update your handmade product' : 'Create a new handmade product' }}
+
+            </p>
+
+        </div>
+
+        <button
+
+        (click)="closeModal()"
+
+        class="text-3xl text-gray-400 hover:text-red-500">
+
+            ×
+
+        </button>
+
+    </div>
+
+
+
+    <!-- Body -->
+
+    <div
+    class="p-6 space-y-5 max-h-[70vh] overflow-y-auto">
+
+        <!-- Image URL -->
+
+        <div>
+
+            <label
+            class="font-semibold">
+
+                Product Image URL
+
+            </label>
+
+            <input
+
+            [(ngModel)]="newProduct.url"
+
+            type="text"
+
+            placeholder="Paste image url"
+
+            class="w-full border rounded-xl p-3 mt-2">
+
+        </div>
+
+
+
+        <!-- Preview -->
+
+        @if(newProduct.url){
+
+        <img
+
+        [src]="newProduct.url"
+
+        class="w-full h-56 object-cover rounded-xl border">
+
+        }
+
+
+
+        <!-- Product Name -->
+
+        <div>
+
+            <label
+            class="font-semibold">
+
+                Product Name
+
+            </label>
+
+            <input
+
+            [(ngModel)]="newProduct.title"
+
+            type="text"
+
+            placeholder="Enter product name"
+
+            class="w-full border rounded-xl p-3 mt-2">
+
+        </div>
+
+
+
+        <!-- Description -->
+
+        <div>
+
+            <label
+            class="font-semibold">
+
+                Description
+
+            </label>
+
+            <textarea
+
+            [(ngModel)]="newProduct.description"
+
+            rows="4"
+
+            placeholder="Enter description"
+
+            class="w-full border rounded-xl p-3 mt-2 resize-none">
+
+            </textarea>
+
+        </div>
+
+
+
+        <!-- Price + Category -->
+
+        <div
+        class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+            <!-- Price -->
+
+            <div>
+
+                <label
+                class="font-semibold">
+
+                    Price
+
+                </label>
+
+                <input
+
+                [(ngModel)]="newProduct.price"
+
+                type="number"
+
+                placeholder="999"
+
+                class="w-full border rounded-xl p-3 mt-2">
+
+            </div>
+
+
+
+            <!-- Category -->
+           <select
+[(ngModel)]="newProduct.category"
+class="w-full border rounded-xl p-3 mt-2">
+
+    <option value="">
+        Select Category
+    </option>
+
+    @for(category of categories; track category._id){
+
+    <option [value]="category.name">
+
+        {{category.name}}
+
+    </option>
+
+    }
+
+</select>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Footer -->
+
+    <div
+    class="border-t p-6 flex gap-4">
+
+        <button
+
+        (click)="closeModal()"
+
+        class="flex-1 border rounded-xl py-3 hover:bg-gray-100">
+
+            Cancel
+
+        </button>
+
+
+
+        <button
+
+        (click)="saveProduct()"
+
+        [disabled]="saving"
+
+        class="flex-1 bg-pink-500 hover:bg-pink-600 text-white rounded-xl py-3">
+
+            @if(!saving){
+
+                {{ editing ? 'Update Product' : 'Save Product' }}
+
+            }
+
+            @else{
+
+                Saving...
+
+            }
+
+        </button>
+
+    </div>
+
+</div>
+
+</div>
+
+}
