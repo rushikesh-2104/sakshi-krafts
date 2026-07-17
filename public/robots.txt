@@ -2,4 +2,9 @@ User-agent: *
 
 Allow: /
 
+Disallow: /auth
+Disallow: /admin/
+Disallow: /cart
+Disallow: /wishlist
+
 Sitemap: https://sakshi-krafts.vercel.app/sitemap.xml
