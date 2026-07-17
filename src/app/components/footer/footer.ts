@@ -26,7 +26,7 @@ export class Footer {
   openInstagram() {
 
     window.open(
-      'https://www.instagram.com/sakshikrafts',
+      'https://www.instagram.com/sakshi.krafts',
       '_blank'
     );
 
