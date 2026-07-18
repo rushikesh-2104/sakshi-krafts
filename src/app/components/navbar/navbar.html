@@ -9,10 +9,10 @@
 
       <!-- MOBILE MENU -->
 
-      <button
+      <button (click)="toggleMenu()"
         class="lg:hidden text-3xl">
 
-        ☰
+        {{ isMenuOpen ? '✕' : '☰' }}
 
       </button>
 
@@ -96,6 +96,67 @@
         </li>
 
       </ul>
+
+
+
+      @if(isMenuOpen){
+
+<div
+  class="lg:hidden absolute top-24 left-0 w-full bg-white shadow-lg">
+
+  <ul class="flex flex-col py-4">
+
+    <li>
+      <a
+        routerLink="/"
+        (click)="toggleMenu()"
+        class="block px-6 py-3">
+        Home
+      </a>
+    </li>
+
+    <li>
+      <a
+        routerLink="/products"
+        (click)="toggleMenu()"
+        class="block px-6 py-3">
+        Shop
+      </a>
+    </li>
+
+    <li>
+      <a
+        routerLink="/custom"
+        (click)="toggleMenu()"
+        class="block px-6 py-3">
+        Custom Orders
+      </a>
+    </li>
+
+    <li>
+      <a
+        routerLink="/aboutus"
+        (click)="toggleMenu()"
+        class="block px-6 py-3">
+        About Us
+      </a>
+    </li>
+
+    <li>
+      <a
+        routerLink="/contact"
+        (click)="toggleMenu()"
+        class="block px-6 py-3">
+        Contact
+      </a>
+    </li>
+
+  </ul>
+
+</div>
+
+}
+
 
       <!-- RIGHT ICONS -->
 

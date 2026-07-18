@@ -14,6 +14,12 @@ export class Navbar {
   cartCount = 0;
   wishlistCount = 0;
 
+  isMenuOpen = false;
+
+toggleMenu() {
+  this.isMenuOpen = !this.isMenuOpen;
+}
+
   constructor(
     private cartService: Cart, private router: Router,private wishlistService: Wishlist,
   ) {}
