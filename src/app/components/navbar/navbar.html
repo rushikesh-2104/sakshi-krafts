@@ -12,8 +12,26 @@
       <button (click)="toggleMenu()"
         class="lg:hidden text-3xl">
 
-        {{ isMenuOpen ? '✕' : '☰' }}
+@if(!isMenuOpen){
 
+<lord-icon
+    src="https://cdn.lordicon.com/whtfgdfm.json"
+    trigger="click" , trigger="morph"
+    colors="primary:#2E2A28"
+    style="width:32px;height:32px">
+</lord-icon>
+
+}
+@else{
+
+<lord-icon
+    src="https://cdn.lordicon.com/nqtddedc.json"
+    trigger="click" , trigger="morph"
+    colors="primary:#2E2A28"
+    style="width:32px;height:32px">
+</lord-icon>
+
+}
       </button>
 
       <!-- LOGO -->
@@ -169,7 +187,12 @@
           (click)="goToWishlist()"
           class="relative text-3xl">
 
-          ❤️
+          <lord-icon
+    src="https://cdn.lordicon.com/ulnswmkk.json"
+    trigger="hover" , trigger="morph"
+    colors="primary:#ec4899"
+    style="width:32px;height:32px">
+</lord-icon>
 
           @if(wishlistCount > 0){
 
@@ -202,7 +225,12 @@
           (click)="goToCart()"
           class="relative text-3xl">
 
-          🛒
+          <lord-icon
+    src="https://cdn.lordicon.com/slkvcfos.json"
+    trigger="hover" , trigger="morph"
+    colors="primary:#ec4899"
+    style="width:32px;height:32px">
+</lord-icon>
 
           @if(cartCount > 0){
 

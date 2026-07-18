@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { Cart } from '../../services/cart';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import { Wishlist } from '../../services/wishlist';
 
+
+
 @Component({
   selector: 'app-navbar',
   imports: [RouterLink,RouterModule],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })
