@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
   imports: [RouterModule],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './footer.html',
   styleUrl: './footer.css',
 })
