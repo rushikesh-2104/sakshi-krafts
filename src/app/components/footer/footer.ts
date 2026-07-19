@@ -16,7 +16,7 @@ export class Footer {
   openWhatsapp() {
 
     window.open(
-      'https://wa.me/917208553533',
+      'https://wa.me/919326562042',
       '_blank'
     );
 
