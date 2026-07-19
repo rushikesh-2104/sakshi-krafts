@@ -79,7 +79,7 @@ export class ProductDetails {
   }
 orderOnWhatsapp() {
 
-  const phone = '7208553533'; // Sakshi ka WhatsApp Number
+  const phone = '9326562042'; // Sakshi ka WhatsApp Number
 
   const message = `
 Hi Sakshi Krafts 👋

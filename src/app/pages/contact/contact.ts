@@ -23,7 +23,7 @@ export class Contact {
 
   sendMessage() {
 
-    const phone = '917208553533'; // Replace
+    const phone = '919326562042'; // Replace
 
     const text = `Hello Sakshi Krafts! 👋
 

@@ -21,7 +21,7 @@ export class CustomOrders {
 
   sendToWhatsapp() {
 
-    const phone = '917208553533'; // Replace with your WhatsApp number
+    const phone = '919326562042'; // Replace with your WhatsApp number
 
     const message = `Hello Sakshi Krafts! 👋
 
