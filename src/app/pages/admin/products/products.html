@@ -290,7 +290,7 @@ class="w-full border rounded-xl p-3 mt-2">
     <div
         class="lg:hidden mt-8 flex flex-col gap-5">
 
-        @for(product of products; track product._id){
+        @for(product of filtered; track product._id){
 
         <div
             class="bg-white rounded-2xl shadow-sm p-4">
