@@ -62,11 +62,11 @@
 
             <!-- Category -->
 
-            <select
+            <select 
 [(ngModel)]="selectedCategory" (change)="filterCategory()"
 class="w-full border rounded-xl p-3 mt-2">
 
-    <option value="">
+<option value="" disabled>
         Select Category
     </option>
 
