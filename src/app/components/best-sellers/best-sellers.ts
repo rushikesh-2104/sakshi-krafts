@@ -22,8 +22,8 @@ products:any[] = [];
       .subscribe((data:any)=>{
 
         this.products = data
-        .sort(()=>0.5-Math.random())
-        .slice(0,5);
+        .sort(()=>0.4-Math.random())
+        .slice(0,4);
 
       });
 
