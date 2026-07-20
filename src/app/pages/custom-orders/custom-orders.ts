@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Category } from '../../services/category';
 
 @Component({
   selector: 'app-custom-orders',
@@ -7,8 +8,28 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './custom-orders.html',
   styleUrl: './custom-orders.css',
 })
-export class CustomOrders {
+export class CustomOrders implements OnInit{
+constructor(private categoryService:Category){}
+categories: any[] = [];
+ngOnInit(): void {
 
+  this.categoryService.getCategories().subscribe({
+
+    next: (res) => {
+
+      this.categories = res;
+
+    },
+
+    error: (err) => {
+
+      console.log(err);
+
+    }
+
+  });
+
+}
   form = {
     name: '',
     phone: '',

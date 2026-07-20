@@ -123,30 +123,24 @@
         class="border rounded-xl p-4">
 
       <select
-        [(ngModel)]="form.category"
-        class="border rounded-xl p-4">
+[(ngModel)]="form.category"
+class="border rounded-xl p-4">
 
-        <option value="">
-          Select Category
+    <option value="">
+        Select Category
+    </option>
+
+    @for(category of categories; track category._id){
+
+        <option [value]="category.name">
+
+            {{category.name}}
+
         </option>
 
-        <option>
-          Bouquet
-        </option>
+    }
 
-        <option>
-          Hair Accessories
-        </option>
-
-        <option>
-          Keychains
-        </option>
-
-        <option>
-          Other
-        </option>
-
-      </select>
+</select>
 
       <input
         [(ngModel)]="form.color"
