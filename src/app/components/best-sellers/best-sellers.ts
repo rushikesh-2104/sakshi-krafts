@@ -21,7 +21,9 @@ products:any[] = [];
       .getProducts()
       .subscribe((data:any)=>{
 
-        this.products = data;
+        this.products = data
+        .sort(()=>0.5-Math.random())
+        .slice(0,5);
 
       });
 
