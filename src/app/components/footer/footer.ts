@@ -38,7 +38,7 @@ export class Footer {
   sendMail() {
 
     window.location.href =
-      'mailto:hello@sakshikrafts.com';
+      'mailto:sakshi.krafts@gmail.com';
 
   }
 

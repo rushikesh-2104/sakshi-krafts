@@ -66,9 +66,6 @@
 [(ngModel)]="selectedCategory" (change)="filterCategory()"
 class="w-full border rounded-xl p-3 mt-2">
 
-<option value="" disabled [defaultSelected]="selectedCategory">
-        Select Category
-    </option>
 
     @for(category of categories; track category._id){
 
