@@ -285,20 +285,27 @@
     </div>
 
     <!-- Social -->
-
+    <div class="flex justify-center mt-5">
+      <p>FOLLOW US ON</p>
+    </div>
     <div
       class="flex
       justify-center
       gap-5
-      mt-12
+      mt-3
       flex-wrap">
+
+      
 
       <button
         (click)="openInstagram()"
-        class="px-6 flex gap-2
+        class="px-3 flex gap-2
         py-3
-        rounded-xl
-        bg-blue-800
+        rounded-full
+        bg-gradient-to-r
+         from-[#F58529]
+         via-[#DD2A7B]
+         to-[#8134AF]
         text-white
         hover:scale-105
         duration-300">
@@ -308,15 +315,15 @@
     trigger = "click"
     colors="primary:#ffffff"
     style="width:24px;height:24px">
-</lord-icon> Instagram
+</lord-icon> 
 
       </button>
 
       <button
         (click)="sendMail()"
-        class="px-6 flex gap-2
+        class="px-3 flex gap-2
         py-3
-        rounded-xl
+        rounded-full
         bg-red-500
         text-white
         hover:scale-105
@@ -327,15 +334,15 @@
     trigger = "click"
     colors="primary:#ffffff"
     style="width:24px;height:24px">
-</lord-icon> Email
+</lord-icon> 
 
       </button>
 
       <button
         (click)="openWhatsapp()"
-        class="px-6 flex gap-2
+        class="px-3 flex gap-2
         py-3
-        rounded-xl
+        rounded-full
         bg-green-500
         shadow-2xl
         text-white
@@ -347,9 +354,11 @@
     trigger = "click"
     colors="primary:#ffffff"
     style="width:26px;height:26px;">
-</lord-icon> WhatsApp
+</lord-icon> 
 
       </button>
+ 
+      
 
     </div>
 
